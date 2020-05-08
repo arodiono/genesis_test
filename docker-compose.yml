@@ -1,0 +1,26 @@
+# THIS DOCKERFILE IS INTENDED FOR DEVELOPMENT ENVIRONMENTS
+# DO NOT USE THIS FOR PRODUCTION USAGES.
+
+version: "3"
+services:
+  database:
+    container_name: database
+    image: mysql:5.7.30
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    restart: always
+  api:
+    container_name: api
+    build: .
+    volumes:
+      - ".:/usr/src/api"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
