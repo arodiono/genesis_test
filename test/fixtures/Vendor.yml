@@ -1,0 +1,5 @@
+entity: Vendor
+parameters: {}
+items:
+  vendor{1..2}:
+    name: '{{company.companyName}}'

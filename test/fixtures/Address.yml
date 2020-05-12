@@ -1,0 +1,9 @@
+entity: Address
+parameters: {}
+items:
+  address{1..2}:
+    latitude: '{{address.latitude}}'
+    longitude: '{{address.longitude}}'
+    title: '{{address.streetName}}'
+    details: '{{address.streetAddress}}'
+    userId: '@user($current)'

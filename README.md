@@ -6,6 +6,26 @@
 yarn install
 ```
 
+### Run migrations
+_Setup environment variables in .env_
+
+```bash
+yarn typeorm migration:run
+```
+
+### Run test
+
+```bash
+# unit tests
+yarn test
+
+# e2e tests
+yarn test:e2e
+
+# test coverage
+yarn test:cov
+```
+
 ### Run the app
 
 ```bash
@@ -14,28 +34,4 @@ yarn start:dev
 
 # production mode
 yarn start:prod
-```
-
-### Run test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-
----
-
-## Run with docker
-
-### Up container
-
-```bash
-yarn dev:up
 ```

@@ -9,10 +9,7 @@ async function bootstrap() {
 
   app.use(helmet())
 
-  await app.listen(
-    configService.get('APP_PORT'),
-    configService.get('APP_HOST'),
-  )
+  await app.listen(configService.get('APP_PORT'), configService.get('APP_HOST'))
 }
 
 bootstrap()

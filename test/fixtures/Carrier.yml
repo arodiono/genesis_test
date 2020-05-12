@@ -1,0 +1,7 @@
+entity: Carrier
+parameters: {}
+items:
+  carrier{1..2}:
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    phone: '{{phone.phoneNumber}}'

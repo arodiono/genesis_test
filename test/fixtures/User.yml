@@ -1,0 +1,7 @@
+entity: User
+parameters: {}
+items:
+  user{1..2}:
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    phone: '{{phone.phoneNumber}}'

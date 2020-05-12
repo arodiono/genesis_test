@@ -18,17 +18,23 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "dev:up": " docker-compose up --build"
+    "dev:up": " docker-compose up --build",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "fixtures": "fixtures test/fixtures --require=ts-node/register --require=tsconfig-paths/register"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^7.0.9",
     "@nestjs/config": "^0.4.1",
     "@nestjs/core": "^7.0.9",
+    "@nestjs/jwt": "^7.0.0",
+    "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^7.0.9",
     "@nestjs/typeorm": "^7.0.0",
     "helmet": "^3.22.0",
     "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
@@ -43,6 +49,7 @@
     "@types/helmet": "^0.0.46",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
+    "@types/passport-jwt": "^3.0.3",
     "@types/supertest": "^2.0.8",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
@@ -52,6 +59,7 @@
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
+    "typeorm-fixtures-cli": "^1.5.0",
     "typescript": "^3.7.2"
   }
 }

@@ -1,15 +1,20 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
 import { ConfigModule, ConfigService } from '@nestjs/config'
+import { VendorsModule } from './vendors/vendors.module'
+import { ProductsModule } from './products/products.module'
+import { CarriersModule } from './carriers/carriers.module'
+import { OrdersModule } from './orders/orders.module'
+import { UsersModule } from './users/users.module'
+import { AuthModule } from './auth/auth.module'
 import validationSchema from './config/validationSchema'
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    validationSchema,
-  }),
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
@@ -28,9 +33,12 @@ import validationSchema from './config/validationSchema'
         } as TypeOrmModuleAsyncOptions),
       inject: [ConfigService],
     }),
+    VendorsModule,
+    ProductsModule,
+    CarriersModule,
+    OrdersModule,
+    UsersModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
-export class AppModule {
-}
+export class AppModule {}

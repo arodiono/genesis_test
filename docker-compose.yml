@@ -7,20 +7,9 @@ services:
     container_name: database
     image: mysql:5.7.30
     environment:
-      MYSQL_HOST: localhost
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: '{{TYPEORM_DATABASE}}'
+      MYSQL_USER: '{{TYPEORM_PASSWORD}}'
+      MYSQL_PASSWORD: '{{TYPEORM_USERNAME}}'
     ports:
-      - "3306:3306"
-    restart: always
-  api:
-    container_name: api
-    build: .
-    volumes:
-      - ".:/usr/src/api"
-    ports:
-      - "3000:3000"
-    depends_on:
-      - database
+      - "{{TYPEORM_PORT}}:3306"

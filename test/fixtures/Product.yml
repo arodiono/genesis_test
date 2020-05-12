@@ -1,0 +1,8 @@
+entity: Product
+parameters: {}
+items:
+  product{1..2}:
+    name: '{{commerce.productName}}'
+    description: '{{lorem.paragraph}}'
+    price: '{{commerce.price}}'
+    vendor: '@vendor($current)'
