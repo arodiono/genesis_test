@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { VendorsController } from './vendors.controller'
 import { VendorsService } from './vendors.service'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { getRepositoryToken } from '@nestjs/typeorm'
 import { Vendor } from './vendor.entity'
 import { CreateVendorDto } from './dto/create-vendor.dto'
 import { UpdateVendorDto } from './dto/update-vendor.dto'
+import { Repository } from 'typeorm'
 
 describe('Vendors Controller', () => {
   let module: TestingModule
@@ -13,9 +14,14 @@ describe('Vendors Controller', () => {
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
-      imports: [TypeOrmModule.forRoot(), TypeOrmModule.forFeature([Vendor])],
       controllers: [VendorsController],
-      providers: [VendorsService],
+      providers: [
+        VendorsService,
+        {
+          provide: getRepositoryToken(Vendor),
+          useClass: Repository,
+        },
+      ],
     }).compile()
   })
 
