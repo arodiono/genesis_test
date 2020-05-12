@@ -24,6 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: yarn install
+    - run: yarn lint
+    - run: yarn test
       env:
         TYPEORM_CONNECTION: mysql
         TYPEORM_HOST: localhost
@@ -38,7 +41,3 @@ jobs:
         TYPEORM_MIGRATIONS_DIR: src/database/migrations
         TYPEORM_DRIVER_EXTRA: '{"charset": "utf8mb4"}'
         JWT_SECRET: loremIpsumDolor
-
-    - run: yarn install
-    - run: yarn lint
-    - run: yarn test
